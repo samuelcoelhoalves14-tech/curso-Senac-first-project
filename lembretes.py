@@ -10,7 +10,10 @@
 # ================================================================
 
 import customtkinter
-
+cor_light_fg = "#9400D3"
+cor_light_hv = "#9B4CEA"
+cor_dark_fg = "#0000FF"
+cor_dark_hv = "#2272D3"
 # Tema do app: "dark" é o modo escuro e "light" é o claro
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
@@ -19,6 +22,8 @@ customtkinter.set_default_color_theme("blue")
 janela = customtkinter.CTk()
 janela.title("Meus Lembretes")
 janela.geometry("800x750")
+# icone do sistema
+janela.iconbitmap("9393eaa0-699b-4bd4-a116-57bcfc45ceeb.ico")
 
 # Tamanho da letra dos lembretes
 tamanho_letra = 26  # 👉 TROQUE AQUI se quiser começar maior ou menor
@@ -131,9 +136,18 @@ def trocar_tema():
     if tema_atual == "Dark":
         customtkinter.set_appearance_mode("light")
         btn_tema.configure(text="Modo escuro")
+        btn_diminuir.configure(fg_color = cor_dark_fg, hover_color = cor_dark_hv)
+        btn_aumentar.configure(fg_color = cor_dark_fg, hover_color = cor_dark_hv)
+        btn_adicionar.configure(fg_color = cor_dark_fg, hover_color = cor_dark_hv)
+        btn_tema.configure(fg_color = cor_dark_fg, hover_color = cor_dark_hv)
     else:
         customtkinter.set_appearance_mode("dark")
         btn_tema.configure(text="Modo claro")
+        btn_diminuir.configure(fg_color = cor_light_fg, hover_color = cor_light_hv)
+        btn_aumentar.configure(fg_color = cor_light_fg, hover_color = cor_light_hv)
+        btn_adicionar.configure(fg_color = cor_light_fg, hover_color = cor_light_hv)
+        btn_tema.configure(fg_color = cor_light_fg, hover_color = cor_light_hv)
+
 
 
 # ================================================================
@@ -143,18 +157,18 @@ def trocar_tema():
 frame_barra = customtkinter.CTkFrame(master=janela)
 frame_barra.pack(padx=10, pady=10, fill="x")
 
-btn_diminuir = customtkinter.CTkButton(master=frame_barra, text="A-", width=60, height=50,fg_color = "#9966CC", hover_color = "#9400D3",
+btn_diminuir = customtkinter.CTkButton(master=frame_barra, text="A-", width=60, height=50,fg_color = cor_light_fg, hover_color = cor_light_hv,
                                        font=("Arial", 22), command=diminuir)
 btn_diminuir.pack(side="left", padx=5, pady=10)
 
-btn_aumentar = customtkinter.CTkButton(master=frame_barra, text="A+", width=60, height=50, fg_color = "#9966CC",hover_color = "#9400D3",
+btn_aumentar = customtkinter.CTkButton(master=frame_barra, text="A+", width=60, height=50, fg_color = cor_light_fg, hover_color = cor_light_hv,
                                        font=("Arial", 22), command=aumentar)
 btn_aumentar.pack(side="left", padx=5, pady=10)
 
 info_tamanho = customtkinter.CTkLabel(master=frame_barra, text="Letra: 26", font=("Arial", 20))
 info_tamanho.pack(side="left", padx=15)
 
-btn_tema = customtkinter.CTkButton(master=frame_barra, text="Modo claro", height=50, fg_color = "#9966CC", hover_color = "#9400D3",
+btn_tema = customtkinter.CTkButton(master=frame_barra, text="Modo claro", height=50, fg_color = cor_light_fg, hover_color = cor_light_hv,
                                    font=("Arial", 20), command=trocar_tema)
 btn_tema.pack(side="right", padx=10, pady=10)
 
@@ -170,7 +184,7 @@ entrada = customtkinter.CTkEntry(master=frame_entrada, height=50, font=("Arial",
                                  placeholder_text="Ex.: Tomar remédio às 8h")
 entrada.pack(side="left", padx=10, pady=10, fill="x", expand=True)
 
-btn_adicionar = customtkinter.CTkButton(master=frame_entrada, text="Adicionar", height=50, fg_color = "#9966CC", hover_color = "#9400D3",
+btn_adicionar = customtkinter.CTkButton(master=frame_entrada, text="Adicionar", height=50, fg_color = cor_light_fg, hover_color = cor_light_hv,
                                         font=("Arial", 22), command=adicionar)
 btn_adicionar.pack(side="right", padx=10, pady=10)
 
